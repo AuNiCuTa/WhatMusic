@@ -6,4 +6,8 @@
 .header {
   padding: 20px;
   background-color: aquamarine;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
 }
