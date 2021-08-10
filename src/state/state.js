@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchArtists } from '../services/musicBrainz.js';
+import { fetchArtists, fetchReleases } from '../services/musicBrainz.js';
 
 const useArtists = () => {
   const [artists, setArtists] = useState([]);
@@ -11,11 +11,30 @@ const useArtists = () => {
       .then(res => setArtists(res))
       .then(() => setLoading(false))
       .catch(err => console.log(err))
-    ;
+      ;
   }, [searchTerm]);
 
 
   return { artists, loading, setSearchTerm };
 };
 
-export { useArtists };
+const useReleases = (id) => {
+  const [releases, setReleases] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchReleases(id)
+      .then(releases => setReleases(releases))
+      .then(() => setLoading(false))
+      .catch(err => console.log(err));
+  }, []);
+
+  return { loading, releases };
+};
+
+
+
+
+export { useArtists, useReleases };
+
+

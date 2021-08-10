@@ -7,3 +7,12 @@ export const fetchArtists = async (searchTerm) => {
     .then(json => json.artists)
     .catch(error => console.log(error));
 };
+
+export const fetchReleases = async (id) => {
+  return await fetch(
+    `${musicBrainz}release?artist=${id}&fmt=json`
+  )
+    .then(res => res.json())
+    .then(json => json.releases)
+    .catch(error => console.log(error));
+};
