@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect
+  Redirect,
 } from 'react-router-dom';
 import ArtistList from '../results/ArtistList';
 import ReleaseList from '../releases/ReleaseList';
@@ -12,21 +12,17 @@ import ReleaseList from '../releases/ReleaseList';
 export default function App() {
   return (
     <Router>
-
       <Switch>
-        <Route exact to="/" render={
-          routerProps => <ArtistList {...routerProps} />
-        } />
+        <Route exact path="/home" component={ArtistList} />
 
-        <Route exact to="/artist/:id" render={routerProps => <ReleaseList {...routerProps} />} />
+        <Route exact path="/artist/:id" component={ReleaseList} />
 
-        <Route exact to="/releases/:id" />
+        <Route exact path="/releases/:id" />
 
-        <Route exact to="/recordings/:id" />
+        <Route exact path="/recordings/:id" />
 
-        <Redirect to="/" />
+        <Redirect path="/home" />
       </Switch>
-
     </Router>
   );
 }

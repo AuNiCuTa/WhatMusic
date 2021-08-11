@@ -11,7 +11,7 @@ const useArtists = () => {
       .then(res => setArtists(res))
       .then(() => setLoading(false))
       .catch(err => console.log(err))
-      ;
+    ;
   }, [searchTerm]);
 
 
