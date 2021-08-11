@@ -2,3 +2,8 @@
 .app ul li span:nth-of-type(2) {
   opacity: 0.5;
 }
+
+img {
+  max-width: 12rem;
+  max-height: 12rem;
+}
