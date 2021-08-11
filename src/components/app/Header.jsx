@@ -19,19 +19,30 @@ const Header = (props) => {
     <header className={styles.header}>
       <Link className={styles.sign} to="/">
         <span className={styles.fastFlicker}>W</span>
-        <span className={styles.flicker, styles.space}>hat</span>
+        <span className={(styles.flicker, styles.space)}>hat</span>
         <span className={styles.flicker}>Mu</span>
         <span className={styles.fastFlicker}>si</span>
         <span className={styles.flicker}>c</span>
       </Link>
-      <form name="search" onSubmit={handleSubmit}>
+
+      <form name="search" data-testid="form" onSubmit={handleSubmit}>
         <input
           name="search"
           type="text"
+          placeholder="search"
           defaultValue={query.get('searchTerm')}
         ></input>
-        <button className={styles.headerButton} type="submit">find</button>
+
+        <button
+          className={styles.headerButton}
+          data-testid="find"
+          type="submit"
+        >
+          find
+        </button>
       </form>
+
+      <div></div>
     </header>
   );
 };
