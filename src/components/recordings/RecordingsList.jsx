@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Recording from '../recordings/RecordingsItem';
 import { fetchRecordings } from '../../services/musicBrainz';
-import 
 
 const RecordingsList = () => {
   const { id } = useParams();
