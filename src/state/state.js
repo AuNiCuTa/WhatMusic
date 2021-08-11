@@ -6,16 +6,20 @@ const useArtists = () => {
   const [artists, setArtists] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
-    searchTerm && fetchArtists(searchTerm)
-      .then(res => setArtists(res))
+    searchTerm && fetchArtists(searchTerm, page)
+      .then(({ artists, count }) => {
+        setArtists(artists || []);
+        if (count < (page + 1) * 25) setPage(Math.floor(count / 25));
+      })
       .then(() => setLoading(false))
       .catch(err => console.log(err))
     ;
-  }, [searchTerm]);
+  }, [searchTerm, page]);
 
-  return { artists, loading, setSearchTerm };
+  return { artists, loading, setSearchTerm, page, setPage };
 };
 
 const useReleases = (id) => {
