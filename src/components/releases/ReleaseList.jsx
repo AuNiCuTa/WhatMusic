@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import Header from '../app/Header';
 import { useReleases } from '../../state/state';
@@ -16,10 +17,12 @@ const ReleaseList = () => {
         <ul>
           {releases.map((release) => (
             <li key={release.id}>
-              <img src={release.cover} />
+              <Link to={`/releases/${release.id}`}>
+                <img src={release.cover} />
 
-              <span>{release.title}</span>
-              <span>{release['release-events'][0].date}</span>
+                <span>{release.title}</span>
+                <span>{release['release-events'][0].date}</span>
+              </Link>
             </li>
           ))}
         </ul>
