@@ -4,13 +4,21 @@ import { useArtists } from '../../state/state.js';
 import Header from '../app/Header';
 
 const ArtistList = () => {
-  const { artists, loading, setSearchTerm } = useArtists();
+  const { artists, loading, setSearchTerm, page, setPage } = useArtists();
 
   return (
     <>
       <Header setSearchTerm={setSearchTerm} />
 
-      {!loading && (
+      {!loading && <>
+        <div>
+          <button onClick={() => setPage(Math.max(0, page - 1))}>←</button>
+          <span>{page + 1}</span>
+          <button
+            onClick={() => setPage(Math.min(100, page + 1))}
+          >→</button>
+        </div>
+
         <ul>
           {artists.map((artist) => (
             <li key={artist.id}>
@@ -21,7 +29,7 @@ const ArtistList = () => {
             </li>
           ))}
         </ul>
-      )}
+      </>}
     </>
   );
 };
