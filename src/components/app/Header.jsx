@@ -11,12 +11,16 @@ const Header = (props) => {
 
   return (
     <header className={styles.header}>
-      <Link to="/">
-        <h1>What Music</h1>
+      <Link className={styles.sign} to="/">
+        <span className={styles.fastFlicker}>W</span>
+        <span className={styles.flicker, styles.space}>hat</span>
+        <span className={styles.flicker}>Mu</span>
+        <span className={styles.fastFlicker}>si</span>
+        <span className={styles.flicker}>c</span>
       </Link>
       <form name="search" onSubmit={handleSubmit}>
         <input name="search" type="text"></input>
-        <button type="submit">find</button>
+        <button className={styles.headerButton} type="submit">Find</button>
       </form>
     </header>
   );
