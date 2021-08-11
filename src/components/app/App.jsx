@@ -21,7 +21,7 @@ export default function App() {
 
         <Route exact path="/recordings/:id" />
 
-        <Redirect path="/home" />
+        <Redirect to="/home" />
       </Switch>
     </Router>
   );
