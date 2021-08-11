@@ -1,31 +1,30 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import Header from '../app/Header';
 import { useReleases } from '../../state/state';
-import PropTypes from 'prop-types';
 
-const ReleaseList = (props) => {
+const ReleaseList = () => {
+  const { id } = useParams();
+  const { releases, loading } = useReleases(id);
 
-  const { releases, loading } = useReleases(props.match.params.id);
+  console.log('releaseList', releases);
 
-  return <>
-    <Header setSearchTerm={e => e.preventDefault()} />
+  return (
+    <>
+      <Header setSearchTerm={(e) => e.preventDefault()} />
 
-    {!loading && <ul>
-      {releases.map(release => <li key={release.id}>
-        <span>{release.title}</span>
-        <span>{release['release-events'][0].date}</span>
-
-
-      </li>)}
-    </ul>}
-  </>;
-};
-
-ReleaseList.propTypes = {
-  match: PropTypes.object
+      {!loading && (
+        <ul>
+          {releases.map((release) => (
+            <li key={release.id}>
+              <span>{release.title}</span>
+              <span>{release['release-events'][0].date}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
+  );
 };
 
 export default ReleaseList;
-
-
-
