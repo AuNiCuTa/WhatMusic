@@ -11,7 +11,7 @@ const ReleaseList = () => {
 
   return (
     <>
-      <Header setSearchTerm={(e) => e.preventDefault()} />
+      <Header />
 
       {!loading && (
         <ul>
