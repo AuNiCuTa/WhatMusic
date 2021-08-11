@@ -8,10 +8,11 @@ import {
 } from 'react-router-dom';
 import ArtistList from '../results/ArtistList';
 import ReleaseList from '../releases/ReleaseList';
+import styles from './app.css';
 
 export default function App() {
   return (
-    <Router>
+    <Router className={styles.app}>
 
       <Switch>
         <Route exact to="/" render={

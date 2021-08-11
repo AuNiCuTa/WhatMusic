@@ -1,0 +1,4 @@
+
+.app ul li span:nth-of-type(2) {
+  opacity: 0.5;
+}
