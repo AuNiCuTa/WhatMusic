@@ -1,12 +1,17 @@
 const coverArt = 'http://coverartarchive.org/release/';
 
 export const fetchCoverArt = async (releaseId) => {
-  return await fetch(`${coverArt}${releaseId}/front`)
-    .then(res => res.redirected
-      ? res.url
-      : 'https://placekitten.com/200/286'
-    );
+  const url = `${coverArt}${releaseId}/front`;
 
+  const retVal = await fetch(url)
+    .then(res => {
+      return res.status === 404
+        ? 'https://placekitten.com/200/286'
+        : url;
+    })
+    .catch(err => console.log(err))
+  ;
 
+  return retVal;
 };
 

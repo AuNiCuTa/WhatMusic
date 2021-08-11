@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchArtists, fetchReleases } from '../services/musicBrainz.js';
+import { fetchCoverArt } from '../services/coverArt';
 
 const useArtists = () => {
   const [artists, setArtists] = useState([]);
@@ -14,7 +15,6 @@ const useArtists = () => {
     ;
   }, [searchTerm]);
 
-
   return { artists, loading, setSearchTerm };
 };
 
@@ -24,9 +24,14 @@ const useReleases = (id) => {
 
   useEffect(() => {
     fetchReleases(id)
+      .then(releases => Promise.all(releases.map(release => {
+        return fetchCoverArt(release.id)
+          .then(cover => ({ ...release, cover }))
+        ;
+      })))
       .then(releases => setReleases(releases))
-      .then(() => setLoading(false))
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
+      .finally(() => setLoading(false));
   }, []);
 
   return { loading, releases };
