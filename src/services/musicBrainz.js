@@ -16,3 +16,12 @@ export const fetchReleases = async (id) => {
     .then(json => json.releases)
     .catch(error => console.log(error));
 };
+
+export const fetchRecordings = async (id) => {
+  return await fetch(
+    `${musicBrainz}recording?release=${id}&fmt=json`
+  )
+    .then(res => res.json())
+    .then(json => json.recordings)
+    .catch(error => console.log(error));
+};

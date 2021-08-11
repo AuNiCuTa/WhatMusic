@@ -9,6 +9,7 @@ import {
 import ArtistList from '../results/ArtistList';
 import ReleaseList from '../releases/ReleaseList';
 import styles from './app.css';
+import RecordingsList from '../recordings/RecordingsList';
 
 export default function App() {
   return (
@@ -17,7 +18,7 @@ export default function App() {
         <Switch>
           <Route exact path="/home" component={ArtistList} />
           <Route exact path="/artist/:id" component={ReleaseList} />
-          <Route exact path="/releases/:id" />
+          <Route exact path="/releases/:id" component={RecordingsList} />
           <Route exact path="/recordings/:id" />
           <Redirect to="/home" />
         </Switch>
