@@ -12,19 +12,16 @@ import styles from './app.css';
 
 export default function App() {
   return (
-    <Router className={styles.app}>
-
-      <Switch>
-        <Route exact path="/home" component={ArtistList} />
-
-        <Route exact path="/artist/:id" component={ReleaseList} />
-
-        <Route exact path="/releases/:id" />
-
-        <Route exact path="/recordings/:id" />
-
-        <Redirect to="/home" />
-      </Switch>
-    </Router>
+    <main className={styles.app}>
+      <Router>
+        <Switch>
+          <Route exact path="/home" component={ArtistList} />
+          <Route exact path="/artist/:id" component={ReleaseList} />
+          <Route exact path="/releases/:id" />
+          <Route exact path="/recordings/:id" />
+          <Redirect to="/home" />
+        </Switch>
+      </Router>
+    </main>
   );
 }
