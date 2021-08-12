@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-const musicBrainz = 'http://musicbrainz.org/ws/2/';
+const musicBrainz = 'https://musicbrainz.org/ws/2/';
 
 export const fetchArtists = async (searchTerm, page) => {
   // eslint-disable-next-line max-len

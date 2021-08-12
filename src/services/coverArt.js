@@ -1,4 +1,4 @@
-const coverArt = 'http://coverartarchive.org/release/';
+const coverArt = 'https://coverartarchive.org/release/';
 
 export const fetchCoverArt = async (releaseId) => {
   const url = `${coverArt}${releaseId}/front`;
