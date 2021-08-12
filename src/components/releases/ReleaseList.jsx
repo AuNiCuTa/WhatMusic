@@ -15,7 +15,7 @@ const ReleaseList = () => {
       <h1>Releases</h1>
 
       {!loading && (
-        <ul>
+        <ul data-testid="releaselist">
           {releases.map((release) => (
             <li key={release.id}>
               <Link to={`/releases/${release.id}`}>
