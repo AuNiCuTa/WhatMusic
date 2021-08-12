@@ -19,7 +19,8 @@ export default function App() {
           <Route exact path="/home" component={ArtistList} />
           <Route exact path="/artist/:id" component={ReleaseList} />
           <Route exact path="/releases/:id" component={RecordingsList} />
-          <Route exact path="/recordings/:id" />
+          <Route exact path="/recordings/:id" render={() =>
+            <p>no lyrics currently available</p>} />
           <Redirect to="/home" />
         </Switch>
       </Router>

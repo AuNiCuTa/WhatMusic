@@ -12,6 +12,7 @@ const ReleaseList = () => {
   return (
     <>
       <Header />
+      <h1>Releases</h1>
 
       {!loading && (
         <ul>

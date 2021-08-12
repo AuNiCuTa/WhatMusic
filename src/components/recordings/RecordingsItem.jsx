@@ -7,7 +7,7 @@ const Recording = ({ id, title }) => {
       <Link to={{
         pathname: `/recordings/${id}`,
         state: {
-          title: title
+          title
         },
       }}>
         <h1>{title}</h1>
